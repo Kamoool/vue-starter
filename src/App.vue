@@ -8,17 +8,17 @@
     <div v-else>Twój adres e-mail jest stanowczo za długi.</div> -->
 
     <h1>Witaj w systemie do zapisów na zajęcia</h1>
-    <div v-if="!logged">
-      Zaloguj się e-mailem
-      <input type="text" v-model="email" />
-      <button @click="logged = true">ZALOGUJ</button>
-    </div>
-    <div v-else-if="logged">
+    <div v-if="authenticatedEmail != ''">
       <div>Witaj {{ email }}!</div>
       <div>
-        <a href="logged=false">Wyloguj</a>
+        <a @click="logMeOut()" href="">Wyloguj</a>
         <!-- <button @click="logged = false">Wyloguj</button> -->
       </div>
+    </div>
+    <div v-else>
+      Zaloguj się e-mailem
+      <input type="text" v-model="email" />
+      <button @click="logMeIn()">ZALOGUJ</button>
     </div>
   </div>
 </template>
@@ -29,12 +29,18 @@ export default {
     return {
       email: "",
       password: "",
-      logged: false,
+      authenticatedEmail: "",
     };
   },
   methods: {
     alertMyEmail() {
       alert(this.email);
+    },
+    logMeIn() {
+      this.authenticatedEmail = this.email;
+    },
+    logMeOut() {
+      this.authenticatedEmail = "";
     },
   },
 };
