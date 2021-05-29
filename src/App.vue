@@ -11,7 +11,7 @@
     <div v-if="authenticatedEmail != ''">
       <div>Witaj {{ email }}!</div>
       <div>
-        <a @click="logMeOut()" href="">Wyloguj</a>
+        <a @click="logMeOut()">Wyloguj</a>
         <!-- <button @click="logged = false">Wyloguj</button> -->
       </div>
     </div>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import "milligram";
 export default {
   data() {
     return {
@@ -40,7 +41,7 @@ export default {
       this.authenticatedEmail = this.email;
     },
     logMeOut() {
-      this.authenticatedEmail = "";
+      (this.authenticatedEmail = ""), (this.email = "");
     },
   },
 };
