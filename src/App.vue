@@ -19,7 +19,12 @@
       <!-- Zaloguj się e-mailem -->
       <!-- <input type="text" v-model="email" /> -->
       <!-- <button @click="logMeIn()">ZALOGUJ</button> -->
-      <login-form @login="logMeIn($event)"></login-form>
+      <login-form @login="logMeIn($event)" buttonLabel="Wejdź"></login-form>
+      <login-form @login="logMeIn($event)" buttonLabel="Wleć"></login-form>
+      <login-form
+        @login="logMeIn($event)"
+        :button-label="Math.random() < 0.5 ? 'Etykieta A' : 'Etykieta B'"
+      ></login-form>
     </div>
   </div>
 </template>
