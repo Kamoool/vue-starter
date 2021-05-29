@@ -16,7 +16,8 @@
     <div v-else-if="logged">
       <div>Witaj {{ email }}!</div>
       <div>
-        <button @click="logged = false">Wyloguj</button>
+        <a href="logged=false">Wyloguj</a>
+        <!-- <button @click="logged = false">Wyloguj</button> -->
       </div>
     </div>
   </div>
@@ -34,12 +35,6 @@ export default {
   methods: {
     alertMyEmail() {
       alert(this.email);
-    },
-    login() {
-      logged: true;
-    },
-    logout() {
-      logged = false;
     },
   },
 };
